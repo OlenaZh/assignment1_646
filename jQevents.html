@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles/normalize.css" type="text/css" rel="stylesheet">
+    <link href="styles/styles.css" type="text/css" rel="stylesheet">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="js/jquery-3.6.0.min.js" ></script>
+    <script>
+        /*$(document).ready(function() {
+            alert("Document is ready");
+        });*/
+        $(function() {
+            $("#myButton").click(function() {
+                window.alert("Button has been clicked");
+            });
+            $("#myButton2").bind("click", function(event) {
+                window.alert("Button has been clicked too");
+            });
+            $("#myButton3").on("click", function(event) {
+                window.alert("Button has been clicked too too");
+            });
+            $('#myDiv').width('400px').height('400px');
+            $('#myDiv').css('background-color', 'white').css('border', 'solid', '0.5px').css('border-color', 'black');
+            /*$('#myDiv').on("mouseenter mouseleave", function() {
+                window.alert("The mouse hovered over or left the div.");
+            });*/
+            $('#myDiv').on({
+                mouseenter: function() {
+                    window.alert("You hovered over the div.");
+                },
+                mouseleave: function() {
+                    window.alert("You left the div.");
+                },
+                click: function() {
+                    window.alert("You clicked the div.");
+                }
+                
+                *$('a').on("click", function(e) {
+                e.preventDefault();
+                $('a').css('color', 'red');
+                $('a').click(function(event) {
+                    window.alert(event.target.nodeName + ' triggered the event.');
+                });
+                }) 
+
+            });
+
+            $(window).resize(function () {
+                $('div').text($(window).width());
+            });
+
+            $("input").focus(function() {
+                $("input").css('background-color', 'light gray');
+            });
+      
+        });
+    
+    </script>
+
+</head>
+<body>
+   <button id="myButton">Click me</button>
+   <button id="myButton2">Click me too</button> 
+   <button id="myButton3">Click me too</button><br><br>
+   <div id="myDiv">My div</div><br><br>
+   <a href="http://www.modulemedia.com">Modul Media</a><br><br>
+   <div id="resize"></div>
+   <input type="text"><br><br>
+</body>
+</html>
